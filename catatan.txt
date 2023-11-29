@@ -45,4 +45,21 @@ Database :
 
 Gambar : 
 	- Gambar yang di posting oleh Author akan tersimpan pada folder  | static\profile_images
+	
+install library python :
+windows+r = cmd / search terminal (cmd)
+	- pip install flask
+	- pip install flask_sqlalchemy
+	- pip install flask_login
+	- pip install flask_wtf
+
+masukkan environment :
+	- search advanced System
+	- klik environment variables
+	- system variables
+	- PATH
+	- klik edit
+	- klik new 
+	- copas directory python. contoh = C:\Users\Sulton-Aji-Darmawan\AppData\Local\Programs\Python\Python312
+	- copas directory python script. contoh = C:\Users\Sulton-Aji-Darmawan\AppData\Local\Programs\Python\Python312\Scripts
 
