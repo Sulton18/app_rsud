@@ -1,0 +1,48 @@
+catatan : 
+
+menu : 
+- home :
+	~ berisi potingan yang di posting oleh author (bisa klik postingan untuk mengetahui detail postingan)
+- profil :
+	~ berisi profil rsud sumenep
+- login
+	~ berisi register (ketika tidak mempunya akun)
+		- form regis :
+			~ username
+			~ email
+			~ password (lenght 8)
+			~ confirm password (harus sama dengan password)
+			~ role (author, admin)
+			~ noted : harus di isi dengan benar , tidak boleh kosong, dan user atau email yang sudah di gunakan tidak bisa di gunakan kembali
+	~ berisi form untuk login dan regis 
+	~ form Login :
+		- username
+		- password
+		- noted : harus di isi dengan benar, tidak boleh kosong
+ 
+- logout :
+	~ untuk keluar dari user yang telah login
+- admin : 
+	~ otorisasi user author 
+	~ menghapus postingan dari user author
+	~ melihat user author
+	~ menghapus user author
+	~ menghapus postingan author
+	~ melihat postingan autho
+	~ view pada postingan (banyak potingan di buka)
+- author :
+	~ menambahkan postingan (sudah termasuk title, deskripsi (content), dan gambar)
+	~ melihat potingan
+	~ mengapus postingan
+	~ memperbaiki atau edit potingan
+	~ view pada postingan (banyak potingan di buka)
+
+noted : untuk tamu bisa langsung melihat postingan pada home
+
+Database : 
+	- folder : instance
+	- buka database bisa menggunakan link https://app.gigasheet.com/datasets/
+
+Gambar : 
+	- Gambar yang di posting oleh Author akan tersimpan pada folder  | static\profile_images
+
