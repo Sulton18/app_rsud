@@ -1,0 +1,24 @@
+<!-- profile.html -->
+{% extends 'layout.html' %}
+
+{% block content %}
+	<h2>Tentang</h2>
+    <h2>RSUD Dr. H. MOH. MOH.ANWAR</h2>
+    <p class="justify">Rumah Sakit Umum Daerah (RSUD) Dr. H. Moh. Anwar Kabupaten Sumenep merupakan Badan Layanan Umum Daerah (BLUD) rumah sakit <img src="{{ url_for('static', filename='image/rsud.jpg') }}" alt="Deskripsi Gambar" style="float: left; margin-right: 10px;">
+	milik Pemerintah Kabupaten Sumenep dan terletak di Jl. Dr. Cipto No. 42 Desa Kolor Kecamatan Kota Sumenep. Rumah Sakit ini mempunyai kategori kelas C dengan jumlah tempat tidur (TT) sebanyak 225 tempat tidur dan karyawan sebayak 522 orang. RSUD Dr. H. Moh. Anwar Kabupaten Sumenep memberikan pelayanan kesehatan rawat jalan, rawat inap, penunjang medis, dan penunjang non medis.
+	RSUD Dr. H. Moh. Anwar Sumenep merupakan unsur pendukung penyelenggaraan pemerintah daerah bidang pelayanan kesehatan yang dipimpin oleh Direktur yang berkedudukan di bawah dan bertanggung jawab kepada Bupati melalui Sekretaris Daerah. RSUD Dr. H. Moh. Anwar Sumenep mempunyai tugas membantu Bupati dalam penyelenggaraan kewenangan bidang pelayanan kesehatan</p>
+	
+	<style>
+        h2 {
+            font-family: courier, monospace;
+            display: block;
+            margin-top: 8px;
+			color: #1b1b53;
+        }
+		.justify {
+			font-family: courier, monospace;
+			text-align: justify;
+		}
+
+    </style>
+{% endblock %}

@@ -1,0 +1,85 @@
+<!-- admin.html -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1 class ="admin" >Admin Dashboard</h1>
+	<ul>
+		{% if current_user.is_authenticated %}
+			<a>User Admin: {{ current_user.username }}</a>
+		{% endif %}
+	</ul>
+	<hr />
+    <h2>Authors</h2>
+    <ul>
+        {% for author in authors %}
+            <li>
+                {{ author.username }} - {{ author.role }}
+                {% if not author.approved %}
+                    (<button type="button" onclick="window.location.href='{{ url_for('approve_author', user_id=author.id) }}'" class="btn_style_admin">Approved</button>)
+                {% endif %}
+                ( <button type="button" onclick="window.location.href='{{ url_for('view_author', user_id=author.id) }}'" class="btn_style_admin">View</button> |
+				<form method="post" action="{{ url_for('delete_author', user_id=author.id) }}"  onsubmit="return confirm('Apakah Anda yakin ingin menghapus akun ini?')" class="delete-form">
+					<input class="btn_style_admin" type="submit" value="Delete">
+				</form> )
+            </li>
+        {% endfor %}
+    </ul>
+	<hr />
+    <h2>All Posts</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Views</th>
+                <th>Author</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td><a href="{{ url_for('view_post', post_id=post.id) }}">{{ post.title }}</a></td>
+                    <td>{{ post.content }}</td>
+                    <td>{{ post.views }}</td>
+                    <td>{{ post.author.username }}</td>
+                    <td>
+                        <form method="post" action="{{ url_for('delete_post', post_id=post.id) }}" onsubmit="return confirm('Apakah Anda yakin ingin menghapus post ini?')" >
+                            <input class="btn_style_admin" type="submit" value="Hapus Post">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <style>
+		.admin{
+			font-family: courier, monospace;
+		}
+        h2 {
+            font-family: courier, monospace;
+        }
+        
+        .btn_style_admin{
+            border: 1px solid #cecece;
+            border-radius: 3px;
+            padding: 3px 10px;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+            color: white;
+            background-color: #1b1b53;
+			cursor: pointer;
+        }
+        .btn_style_admin:hover{
+            border: 1px solid #b1b1b1;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+		.delete-form {
+            display: inline-block; 
+            margin-right: 10px; 
+        }
+    </style>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>{{ post.title }}</h2>
+    <img src="{{ url_for('static', filename='profile_images/' + post.image) }}" height="300px" width="300px" alt="{{ post.title }}">
+    <p>{{ post.content }}</p>
+	<button class="btn_style_post" onclick="window.location.href='{{ url_for('index') }}'">BACK</button>
+	<style>
+        p,h2{
+           font-family: courier, monospace;
+        }
+		
+		img {
+            border: 1px solid #000; /* Add a black border around the image */
+            display: block; /* Remove extra spacing beneath the image */
+            margin: 10px 0; /* Add margin above and below the image */
+        }
+		
+		.btn_style_post{
+			border: 1px solid #cecece;
+			border-radius: 3px;
+			padding: 3px 10px;
+			box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+			color: white;
+			background-color: #1b1b53;
+			cursor: pointer;
+		}
+		.btn_style_post:hover{
+			border: 1px solid #b1b1b1;
+			box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+		}
+    </style>
+{% endblock %}

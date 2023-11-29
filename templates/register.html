@@ -1,0 +1,49 @@
+<!-- register.html -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+  <h1 class="register">Register</h1>
+  
+  <form method="post" action="{{ url_for('register') }}">
+    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+    <div>
+      {{ form.username(size=32, placeholder='Username') }}
+    </div>
+    <div>
+      {{ form.email(size=32, placeholder='Email') }}
+    </div>
+    <div>
+      {{ form.password(size=32, placeholder='Password') }}
+    </div>
+    <div>
+      {{ form.confirm_password(size=32, placeholder='Confirm Password') }}
+    </div>
+    <div>
+      {{ form.role() }}
+    </div>
+    <button class="btn_style_regis" type="submit">Register</button>
+  </form>
+  <style>
+		.register {
+            font-family: courier, monospace;
+        }
+        div {
+            margin-bottom: 10px; /* Adjust the value to control the spacing */
+        }
+		.btn_style_regis{
+			border: 1px solid #cecece;
+			border-radius: 3px;
+			padding: 3px 10px;
+			box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+			color: white;
+			background-color: #1b1b53;
+			cursor: pointer;
+		}
+		.btn_style_regis:hover{
+			border: 1px solid #b1b1b1;
+			box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+		}
+    </style>
+{% endblock %}

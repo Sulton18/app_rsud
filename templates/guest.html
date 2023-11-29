@@ -1,0 +1,48 @@
+<!-- guest.html -->
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1 class="center">Welcome to RSUD MOH. ANWAR</h1>
+    {% for post in posts %}
+        <div class="post">
+            <table>
+                <tr>
+                    <td>
+                        <img src="{{ url_for('static', filename='profile_images/' + post.image) }}" height="100px" width="100px" alt="{{ post.title }}">
+                        <a href="{{ url_for('view_post', post_id=post.id) }}">{{ post.title }}</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
+    <style>
+		.center {
+            text-align: center;
+			color: #1b1b53;
+        }
+        .post {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        tr {
+            height: 120px;
+        }
+        a {
+            font-family: courier, monospace;
+            display: block;
+            margin-top: 8px;
+			color: #1b1b53;
+			font-weight: bold;
+        }
+        img {
+            object-fit: cover;
+        }
+    </style>
+{% endblock %}

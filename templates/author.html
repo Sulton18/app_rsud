@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h3>Authors</h3>
+    <ul>
+        {% if current_user.is_authenticated %}
+			<a>User Author: {{ current_user.username }}</a>
+		{% endif %}
+
+    </ul>
+	<hr />
+    <h3>All Postingan</h3>
+    <table>
+		<thead>
+			<tr>
+				<th class="custom-font" >Title</th>
+				<th class="custom-font" >Content</th>
+				<th class="custom-font" >Views</th>
+				<th class="custom-font" >Author</th>
+				<th class="custom-font" >Action</th>
+			</tr>
+		</thead>
+        <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td><a href="{{ url_for('view_post', post_id=post.id) }}">{{ post.title }}</a></td>
+                    <td>{{ post.content }}</td>
+                    <td>{{ post.views }}</td>
+					<td>{{ post.author.username }}</td>
+					<td>
+						<form method="post" action="{{ url_for('edit_post', post_id=post.id) }}">
+							<button type="submit" class="btn_style_author">Edit Post</button>
+						</form>
+						<form method="post" action="{{ url_for('delete_post', post_id=post.id) }}" onsubmit="return confirm('Apakah Anda yakin ingin menghapus post ini?')">
+							<input class="btn_style_author" type="submit" value="Hapus Post">
+						</form>
+					</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+	<hr />
+    <div class="brosur-section">
+        {% if current_user.brosur_filename %}
+            <img src="{{ url_for('static', filename='profile_images/' + current_user.brosur_filename) }}" width="100px" alt="Brosur">
+        {% else %}
+            <p></p>
+        {% endif %}
+		
+		<form method="post" enctype="multipart/form-data" class="blog-post-form">
+			{{ form.hidden_tag() }}
+
+			<div class="form-group">
+				{{ form.title(placeholder="Title") }}
+			</div>
+
+			<div class="form-group">
+				{{ form.content(placeholder="Content")}}
+			</div>
+
+			<div class="form-group">
+				{{ form.brosur(placeholder="Brosur") }}
+			</div>
+
+			<input class="btn_style_author" type="submit" value="Submit">
+		</form>
+
+
+    </div>
+	<style>
+        h3 {
+            font-family: courier, monospace;
+        }
+		th.custom-font {
+			font-family: 'Courier New', monospace;
+		}
+		
+		.btn_style_author{
+			border: 1px solid #cecece;
+			border-radius: 3px;
+			padding: 3px 10px;
+			box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+			color: white;
+			background-color: #1b1b53;
+			cursor: pointer;
+		}
+		.btn_style_author:hover{
+			border: 1px solid #b1b1b1;
+			box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+		}
+    </style>
+{% endblock %}
